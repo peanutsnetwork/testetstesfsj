@@ -1,33 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>funny cool yes</title>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(registration => {
-            console.log('Service Worker registered!', registration);
-          })
-          .catch(error => {
-            console.error('Service Worker registration failed:', error);
-          });
-      });
-    }
-  </script>
+  <meta charset="UTF-8">
+  <title>Node Messaging App</title>
 </head>
 <body>
-  <div id="content"></div>
+  <input type="text" id="username" placeholder="Enter your username">
+  <input type="text" id="message" placeholder="Enter your message">
+  <button onclick="changeUsername()">Change Username</button>
+  <button onclick="sendMessage()">Send</button>
+  <ul id="chat"></ul>
 
-  <script>
-    fetch('/fetch-page?url=https://read4ever-pnut.koyeb.app')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('content').innerHTML = data;
-      })
-      .catch(error => {
-        console.error('Error fetching content:', error);
-      });
-  </script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
 </body>
 </html>
